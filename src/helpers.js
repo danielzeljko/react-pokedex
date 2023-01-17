@@ -14,4 +14,13 @@ function getCards(pokeList) {
   return cards;
 }
 
-export default getCards;
+/** Calculates exp for pokemon deck */
+function calculateExp(deck) {
+  const initVal = 0
+  const sum = deck.reduce(
+    (acc, currentVal) => acc + currentVal.base_experience, initVal
+  )
+  return sum
+}
+
+export { getCards, calculateExp };

@@ -1,8 +1,12 @@
 import "./Pokedex.css";
 import Pokecard from "./Pokecard";
 
-function Pokedex({ pokeList }) {
-  const list = pokeList.map(p => {
+function Pokedex({ pokeList, isWinner }) {
+  let totalScore = 0;
+
+  const list = pokeList.map((p) => {
+    totalScore += p.base_experience;
+
     return (
       <Pokecard
         key={p.id}
@@ -15,8 +19,10 @@ function Pokedex({ pokeList }) {
   });
 
   return (
-    <div class="Pokedex">
+    <div className="Pokedex">
       {list}
+      <p>total score: {totalScore}</p>
+      {isWinner ? <h2>"This hand wins"</h2> : ""}
     </div>
   );
 }

@@ -1,16 +1,25 @@
 import Pokedex from "./Pokedex";
-import getCards from "./helpers";
-import "./Pokegame.css"
+import {getCards, calculateExp} from "./helpers";
+import "./Pokegame.css";
+import pokeList from "./pokeList";
 
-function Pokegame({ pokeList }) {
+const DEFAULT_CARDS = pokeList;
+
+//Set default value to pokeList
+function Pokegame({ pokeList=DEFAULT_CARDS }) {
+
+  const handOne = getCards(pokeList);
+  const handTwo = getCards(pokeList);
+  const pointsOne = calculateExp(handOne);
+  const pointsTwo = calculateExp(handTwo);
+
+  const winner = (pointsOne > pointsTwo) ? "one" : "two";
+  //what happens if there is a tie?
+
   return (
     <div className="Pokegame">
-      <div className="top-hand">
-        <Pokedex pokeList={getCards(pokeList)}></Pokedex>
-      </div>
-      <div className="bot-hand">
-        <Pokedex pokeList={getCards(pokeList)}></Pokedex>
-      </div>
+      <Pokedex pokeList={handOne} isWinner={winner === "one" ? true : false}></Pokedex>
+      <Pokedex pokeList={handTwo} isWinner={winner === "two" ? true : false}></Pokedex>
     </div>
   );
 }
