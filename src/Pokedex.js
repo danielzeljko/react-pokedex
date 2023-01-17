@@ -2,7 +2,6 @@ import "./Pokedex.css";
 import Pokecard from "./Pokecard";
 
 function Pokedex({ pokeList }) {
-
   const list = pokeList.map(p => {
     return (
       <Pokecard

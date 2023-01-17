@@ -1,4 +1,5 @@
 import Pokedex from "./Pokedex";
+import Pokegame from "./Pokegame"
 
 const pokeList = [
   {id: 4,   name: 'Charmander', type: 'fire',     base_experience: 62},
@@ -11,11 +12,9 @@ const pokeList = [
   {id: 133, name: 'Eevee',      type: 'normal',   base_experience: 65}
 ]
 
-//TODO:butterfree?? hello?
-
 function App() {
   return(
-    <Pokedex pokeList={pokeList}/>
+    <Pokegame pokeList={pokeList} />
   )
 }
 
